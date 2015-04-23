@@ -1,0 +1,39 @@
+<% if admin? %>
+  <h1>Admin</h1>
+  <p>
+    <%= link_to "support package", download_support_path %>
+  </p>
+
+  <p>
+    <%= link_to "export data", export_path %>
+  </p>
+
+  <div>
+    <h2>Import Data</h2>
+    <%= form_tag import_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <br>
+      <%= submit_tag "Submit" %>
+    <% end %>
+  </div>
+
+  <p>
+    <%= link_to "test error", error_test_path %>
+  </p>
+
+  <p>
+    <%= link_to "setup", "/setup" %>
+  </p>
+
+<% else %>
+
+  <div>
+    <h2>Verify Admin</h2>
+    <%= form_tag verify_admin_path, multipart: true do %>
+      <%= file_field_tag :license %>
+      <br>
+      <%= submit_tag "Submit" %>
+    <% end %>
+  </div>
+
+<% end %>
